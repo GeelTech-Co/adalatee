@@ -34,7 +34,7 @@ class AuthController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Registration successful. Please verify your email.',
+                'message' => __('messages.registration_successful'),
                 'data' => [
                     'user' => [
                         'id' => $user->id,
@@ -47,14 +47,14 @@ class AuthController extends Controller
         } catch (ValidationException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Validation failed',
+                'message' => __('messages.validation_failed'),
                 'errors' => $e->errors(),
             ], 422);
         } catch (\Exception $e) {
             Log::error('Registration failed: ' . $e->getMessage());
             return response()->json([
                 'success' => false,
-                'message' => 'Failed to register user: ' . $e->getMessage(),
+                'message' => __('messages.failed_to_update', ['error' => $e->getMessage()]),
             ], 500);
         }
     }
@@ -71,7 +71,7 @@ class AuthController extends Controller
             if (!$user) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Email not found',
+                    'message' => __('messages.email_not_found'),
                 ], 404);
             }
 
@@ -79,14 +79,14 @@ class AuthController extends Controller
                 Log::info('Login failed: Invalid password for ' . $user->email);
                 return response()->json([
                     'success' => false,
-                    'message' => 'Invalid password',
+                    'message' => __('messages.invalid_password'),
                 ], 401);
             }
 
             if (!$user->hasVerifiedEmail()) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Email not verified. Please check your email for the verification link.',
+                    'message' => __('messages.email_not_verified'),
                 ], 403);
             }
 
@@ -94,7 +94,7 @@ class AuthController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Login successful',
+                'message' => __('messages.login_successful'),
                 'data' => [
                     'token' => $token,
                     'user' => [
@@ -108,14 +108,14 @@ class AuthController extends Controller
         } catch (ValidationException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Validation failed',
+                'message' => __('messages.validation_failed'),
                 'errors' => $e->errors(),
             ], 422);
         } catch (\Exception $e) {
             Log::error('Login failed: ' . $e->getMessage());
             return response()->json([
                 'success' => false,
-                'message' => 'Failed to login: ' . $e->getMessage(),
+                'message' => __('messages.failed_to_update', ['error' => $e->getMessage()]),
             ], 500);
         }
     }
@@ -126,13 +126,13 @@ class AuthController extends Controller
             $request->user()->currentAccessToken()->delete();
             return response()->json([
                 'success' => true,
-                'message' => 'Logged out successfully',
+                'message' => __('messages.logout_successful'),
             ], 200);
         } catch (\Exception $e) {
             Log::error('Logout failed: ' . $e->getMessage());
             return response()->json([
                 'success' => false,
-                'message' => 'Failed to logout: ' . $e->getMessage(),
+                'message' => __('messages.failed_to_update', ['error' => $e->getMessage()]),
             ], 500);
         }
     }
@@ -146,7 +146,7 @@ class AuthController extends Controller
             if (!$user) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Email not found',
+                    'message' => __('messages.email_not_found'),
                 ], 404);
             }
 
@@ -156,32 +156,32 @@ class AuthController extends Controller
             if ($status === Password::RESET_LINK_SENT) {
                 return response()->json([
                     'success' => true,
-                    'message' => 'Password reset link sent to your email',
+                    'message' => __('messages.password_reset_link_sent'),
                 ], 200);
             }
 
             if ($status === Password::RESET_THROTTLED) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Too many reset attempts. Please try again later.',
+                    'message' => __('messages.too_many_reset_attempts'),
                 ], 429);
             }
 
             return response()->json([
                 'success' => false,
-                'message' => 'Unable to send reset link',
+                'message' => __('messages.unable_to_send_reset_link'),
             ], 500);
         } catch (ValidationException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Validation failed',
+                'message' => __('messages.validation_failed'),
                 'errors' => $e->errors(),
             ], 422);
         } catch (\Exception $e) {
             Log::error('Forgot password failed: ' . $e->getMessage());
             return response()->json([
                 'success' => false,
-                'message' => 'Failed to process reset request: ' . $e->getMessage(),
+                'message' => __('messages.failed_to_update', ['error' => $e->getMessage()]),
             ], 500);
         }
     }
@@ -207,39 +207,39 @@ class AuthController extends Controller
             if ($status === Password::PASSWORD_RESET) {
                 return response()->json([
                     'success' => true,
-                    'message' => 'Password reset successful',
+                    'message' => __('messages.password_reset_successful'),
                 ], 200);
             }
 
             if ($status === Password::INVALID_TOKEN) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Invalid or expired token',
+                    'message' => __('messages.invalid_token'),
                 ], 400);
             }
 
             if ($status === Password::INVALID_USER) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Email not found',
+                    'message' => __('messages.email_not_found'),
                 ], 404);
             }
 
             return response()->json([
                 'success' => false,
-                'message' => 'Unable to reset password',
+                'message' => __('messages.unable_to_send_reset_link'),
             ], 500);
         } catch (ValidationException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Validation failed',
+                'message' => __('messages.validation_failed'),
                 'errors' => $e->errors(),
             ], 422);
         } catch (\Exception $e) {
             Log::error('Reset password failed: ' . $e->getMessage());
             return response()->json([
                 'success' => false,
-                'message' => 'Failed to reset password: ' . $e->getMessage(),
+                'message' => __('messages.failed_to_update', ['error' => $e->getMessage()]),
             ], 500);
         }
     }
@@ -256,28 +256,28 @@ class AuthController extends Controller
             if (!$user) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'User not found',
+                    'message' => __('messages.user_not_found'),
                 ], 404);
             }
 
             if (!hash_equals((string) $request->hash, sha1($user->email))) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Invalid verification link',
+                    'message' => __('messages.invalid_verification_link'),
                 ], 400);
             }
 
             if (!$request->hasValidSignature()) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Invalid or expired signature',
+                    'message' => __('messages.invalid_signature'),
                 ], 400);
             }
 
             if ($user->hasVerifiedEmail()) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Email already verified',
+                    'message' => __('messages.email_already_verified'),
                 ], 400);
             }
 
@@ -286,19 +286,19 @@ class AuthController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Email verified successfully',
+                'message' => __('messages.email_verification_successful'),
             ], 200);
         } catch (ValidationException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Validation failed',
+                'message' => __('messages.validation_failed'),
                 'errors' => $e->errors(),
             ], 422);
         } catch (\Exception $e) {
             Log::error('Email verification failed: ' . $e->getMessage());
             return response()->json([
                 'success' => false,
-                'message' => 'Failed to verify email: ' . $e->getMessage(),
+                'message' => __('messages.failed_to_update', ['error' => $e->getMessage()]),
             ], 500);
         }
     }
@@ -315,7 +315,7 @@ class AuthController extends Controller
             if ($user->hasVerifiedEmail()) {
                 return response()->json([
                     'success' => false,
-                    'message' => 'Email is already verified',
+                    'message' => __('messages.email_already_verified'),
                 ], 400);
             }
 
@@ -324,19 +324,19 @@ class AuthController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Verification email resent successfully. Please check your inbox.',
+                'message' => __('messages.verification_email_resent'),
             ], 200);
         } catch (ValidationException $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Validation failed',
+                'message' => __('messages.validation_failed'),
                 'errors' => $e->errors(),
             ], 422);
         } catch (\Exception $e) {
             Log::error('Resend verification failed: ' . $e->getMessage());
             return response()->json([
                 'success' => false,
-                'message' => 'Failed to resend verification email: ' . $e->getMessage(),
+                'message' => __('messages.failed_to_resend_verification', ['error' => $e->getMessage()]),
             ], 500);
         }
     }
