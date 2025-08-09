@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Subscription extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'start_date',
+        'end_date',
+        'status',
+        'duration',
+        'canceled_at',
+        'gym_id',
+    ];
+
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date',
+        'canceled_at' => 'datetime',
+        'status' => 'string',
+        'duration' => 'string',
+    ];
+
+    // Relationships
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function gym()
+    {
+        return $this->belongsTo(User::class, 'gym_id');
+    }
+}
