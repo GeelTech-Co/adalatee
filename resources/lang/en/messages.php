@@ -1,0 +1,31 @@
+<?php
+
+return [
+    'name_updated' => 'Name updated successfully',
+    'password_changed' => 'Password changed successfully',
+    'data_reset' => 'User data reset successfully',
+    'language_updated' => 'Language updated successfully',
+    'validation_failed' => 'Validation failed',
+    'invalid_old_password' => 'Invalid old password',
+    'user_not_found' => 'User not found',
+    'unauthenticated' => 'Unauthenticated',
+    'failed_to_update' => 'Failed to update: :error',
+    // AuthController messages
+    'registration_successful' => 'Registration successful. Please verify your email.',
+    'login_successful' => 'Login successful',
+    'email_not_found' => 'Email not found',
+    'invalid_password' => 'Invalid password',
+    'email_not_verified' => 'Email not verified. Please check your email for the verification link.',
+    'logout_successful' => 'Logged out successfully',
+    'password_reset_link_sent' => 'Password reset link sent to your email',
+    'too_many_reset_attempts' => 'Too many reset attempts. Please try again later.',
+    'unable_to_send_reset_link' => 'Unable to send reset link',
+    'password_reset_successful' => 'Password reset successful',
+    'invalid_token' => 'Invalid or expired token',
+    'email_verification_successful' => 'Email verified successfully',
+    'email_already_verified' => 'Email is already verified',
+    'invalid_verification_link' => 'Invalid verification link',
+    'invalid_signature' => 'Invalid or expired signature',
+    'verification_email_resent' => 'Verification email resent successfully. Please check your inbox.',
+    'failed_to_resend_verification' => 'Failed to resend verification email: :error',
+];
