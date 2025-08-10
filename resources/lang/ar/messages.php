@@ -1,6 +1,7 @@
 <?php
 
 return [
+    // UserController messages
     'name_updated' => 'تم تحديث الاسم بنجاح',
     'password_changed' => 'تم تغيير كلمة المرور بنجاح',
     'data_reset' => 'تم إعادة تعيين بيانات المستخدم بنجاح',
@@ -9,7 +10,8 @@ return [
     'invalid_old_password' => 'كلمة المرور القديمة غير صحيحة',
     'user_not_found' => 'المستخدم غير موجود',
     'unauthenticated' => 'غير مصرح',
-    'failed_to_update' => 'فشل التحديث',
+    'failed_to_update' => 'فشل التحديث: :error',
+
     // AuthController messages
     'registration_successful' => 'تم التسجيل بنجاح. يرجى التحقق من بريدك الإلكتروني.',
     'login_successful' => 'تم تسجيل الدخول بنجاح',
@@ -28,4 +30,16 @@ return [
     'invalid_signature' => 'التوقيع غير صالح أو منتهي الصلاحية',
     'verification_email_resent' => 'تم إعادة إرسال بريد التحقق بنجاح. يرجى التحقق من بريدك الإلكتروني.',
     'failed_to_resend_verification' => 'فشل إعادة إرسال بريد التحقق: :error',
+
+    // ExerciseController messages
+    'exercises_retrieved' => 'تم استرجاع التمارين بنجاح',
+    'exercise_retrieved' => 'تم استرجاع التمرين بنجاح',
+    'exercise_created' => 'تم إنشاء التمرين بنجاح',
+    'exercise_updated' => 'تم تحديث التمرين بنجاح',
+    'exercise_deleted' => 'تم حذف التمرين بنجاح',
+    'exercise_not_found' => 'التمرين غير موجود',
+    'unauthorized' => 'إجراء غير مصرح به',
+    'failed_to_create' => 'فشل الإنشاء: :error',
+    'failed_to_retrieve' => 'فشل الاسترجاع: :error',
+    'failed_to_delete' => 'فشل الحذف: :error',
 ];

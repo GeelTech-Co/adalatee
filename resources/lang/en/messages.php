@@ -1,6 +1,7 @@
 <?php
 
 return [
+    // UserController messages
     'name_updated' => 'Name updated successfully',
     'password_changed' => 'Password changed successfully',
     'data_reset' => 'User data reset successfully',
@@ -10,6 +11,7 @@ return [
     'user_not_found' => 'User not found',
     'unauthenticated' => 'Unauthenticated',
     'failed_to_update' => 'Failed to update: :error',
+
     // AuthController messages
     'registration_successful' => 'Registration successful. Please verify your email.',
     'login_successful' => 'Login successful',
@@ -28,4 +30,16 @@ return [
     'invalid_signature' => 'Invalid or expired signature',
     'verification_email_resent' => 'Verification email resent successfully. Please check your inbox.',
     'failed_to_resend_verification' => 'Failed to resend verification email: :error',
+
+    // ExerciseController messages
+    'exercises_retrieved' => 'Exercises retrieved successfully',
+    'exercise_retrieved' => 'Exercise retrieved successfully',
+    'exercise_created' => 'Exercise created successfully',
+    'exercise_updated' => 'Exercise updated successfully',
+    'exercise_deleted' => 'Exercise deleted successfully',
+    'exercise_not_found' => 'Exercise not found',
+    'unauthorized' => 'Unauthorized action',
+    'failed_to_create' => 'Failed to create: :error',
+    'failed_to_retrieve' => 'Failed to retrieve: :error',
+    'failed_to_delete' => 'Failed to delete: :error',
 ];

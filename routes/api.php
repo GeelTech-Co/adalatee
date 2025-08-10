@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +20,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch('/user/change-password', [UserController::class, 'changePassword']);
     Route::post('/user/reset-data', [UserController::class, 'resetData']);
     Route::patch('/settings/language', [UserController::class, 'updateLanguage']);
+
+    // Exercise Management APIs
+    Route::get('/exercises', [ExerciseController::class, 'index']);
+    Route::get('/exercises/{id}', [ExerciseController::class, 'show']);
+    Route::middleware(['check.role:gym,admin', 'check.subscription'])->group(function () {
+        Route::post('/exercises', [ExerciseController::class, 'store']);
+        Route::patch('/exercises/{id}', [ExerciseController::class, 'update']);
+        Route::delete('/exercises/{id}', [ExerciseController::class, 'destroy']);
+    });
 });
