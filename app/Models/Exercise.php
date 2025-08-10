@@ -14,9 +14,6 @@ class Exercise extends Model
         'type',
         'muscle_group',
         'secondary_muscles',
-        'description',
-        'instructions',
-        'precautions',
         'image_url',
         'animation_url',
     ];
@@ -39,5 +36,31 @@ class Exercise extends Model
     public function exerciseLogs()
     {
         return $this->hasMany(ExerciseLog::class);
+    }
+
+    public function translations()
+    {
+        return $this->hasMany(ExerciseTranslation::class);
+    }
+
+    public function getTranslation($locale = null)
+    {
+        $locale = $locale ?? app()->getLocale();
+        return $this->translations()->where('locale', $locale)->first();
+    }
+
+    public function getDescriptionAttribute()
+    {
+        return $this->getTranslation()->description ?? '';
+    }
+
+    public function getInstructionsAttribute()
+    {
+        return $this->getTranslation()->instructions ?? '';
+    }
+
+    public function getPrecautionsAttribute()
+    {
+        return $this->getTranslation()->precautions ?? '';
     }
 }

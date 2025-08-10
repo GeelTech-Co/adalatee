@@ -56,4 +56,30 @@ class WorkoutSession extends Model
     {
         return $this->hasMany(ExerciseLog::class, 'session_id');
     }
+
+    public function hasIncompleteMainExercises()
+    {
+        // Get exercises from the plan or custom plan
+        $expectedExercises = collect([]);
+        if ($this->plan_id && $this->day_id) {
+            $expectedExercises = $this->predefinedDay->exercises()
+                ->where('type', 'main')
+                ->pluck('id');
+        } elseif ($this->custom_plan_id && $this->custom_day_id) {
+            $expectedExercises = $this->customDay->exercises()
+                ->where('type', 'main')
+                ->pluck('id');
+        }
+
+        // Get completed main exercises from logs
+        $completedExercises = $this->exerciseLogs()
+            ->whereHas('exercise', function ($query) {
+                $query->where('type', 'main');
+            })
+            ->pluck('exercise_id')
+            ->unique();
+
+        // Check if any expected main exercises are missing from logs
+        return $expectedExercises->isNotEmpty() && $expectedExercises->diff($completedExercises)->isNotEmpty();
+    }
 }

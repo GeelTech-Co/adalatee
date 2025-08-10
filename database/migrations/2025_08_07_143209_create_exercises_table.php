@@ -14,9 +14,6 @@ return new class extends Migration
             $table->enum('type', ['warmup', 'main', 'recovery']);
             $table->string('muscle_group');
             $table->text('secondary_muscles')->nullable();
-            $table->text('description');
-            $table->text('instructions');
-            $table->text('precautions');
             $table->string('image_url')->nullable();
             $table->string('animation_url')->nullable();
             $table->timestamps();
