@@ -43,7 +43,7 @@ return [
     'failed_to_retrieve' => 'Failed to retrieve: :error',
     'failed_to_delete' => 'Failed to delete: :error',
 
-    // ... Existing messages ...
+    // WorkoutSessionController messages
     'workout_sessions_retrieved' => 'Workout sessions retrieved successfully',
     'workout_session_retrieved' => 'Workout session retrieved successfully',
     'workout_session_created' => 'Workout session created successfully',
@@ -55,5 +55,14 @@ return [
     'incomplete_main_exercises_warning' => 'Some main exercises are not completed. Are you sure you want to end the session?',
     'no_previous_sessions' => 'No previous sessions available',
     'validation_failed_plan' => 'Cannot select both predefined and custom plan.',
+
+    // PredefinedWorkoutPlanController messages
+    'predefined_plans_retrieved' => 'Predefined workout plans retrieved successfully',
+    'predefined_plan_retrieved' => 'Predefined workout plan retrieved successfully',
+    'predefined_plan_created' => 'Predefined workout plan created successfully',
+    'predefined_plan_updated' => 'Predefined workout plan updated successfully',
+    'predefined_plan_deleted' => 'Predefined workout plan deleted successfully',
+    'predefined_plan_not_found' => 'Predefined workout plan not found',
+    'unauthorized' => 'Unauthorized access',
     
 ];

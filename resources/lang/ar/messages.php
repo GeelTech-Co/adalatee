@@ -43,7 +43,7 @@ return [
     'failed_to_retrieve' => 'فشل الاسترجاع: :error',
     'failed_to_delete' => 'فشل الحذف: :error',
 
-    // ... Existing messages ...
+    // WorkoutSessionController messages
     'workout_sessions_retrieved' => 'تم استرجاع جلسات التمارين بنجاح',
     'workout_session_retrieved' => 'تم استرجاع جلسة التمرين بنجاح',
     'workout_session_created' => 'تم إنشاء جلسة التمرين بنجاح',
@@ -55,4 +55,13 @@ return [
     'incomplete_main_exercises_warning' => 'بعض التمارين الأساسية لم تكتمل. هل أنت متأكد أنك تريد إنهاء الجلسة؟',
     'no_previous_sessions' => 'لا توجد جلسات سابقة متاحة',
     'validation_failed_plan' => 'لا يمكن اختيار خطة محددة مسبقًا وخطة مخصصة في نفس الوقت.',
+
+    // PredefinedWorkoutPlanController messages
+    'predefined_plans_retrieved' => 'تم استرجاع الخطط المحددة مسبقًا بنجاح',
+    'predefined_plan_retrieved' => 'تم استرجاع الخطة المحددة مسبقًا بنجاح',
+    'predefined_plan_created' => 'تم إنشاء الخطة المحددة مسبقًا بنجاح',
+    'predefined_plan_updated' => 'تم تحديث الخطة المحددة مسبقًا بنجاح',
+    'predefined_plan_deleted' => 'تم حذف الخطة المحددة مسبقًا بنجاح',
+    'predefined_plan_not_found' => 'الخطة المحددة مسبقًا غير موجودة',
+    'unauthorized' => 'الوصول غير مصرح به',
 ];

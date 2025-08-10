@@ -47,5 +47,12 @@ return [
         'exercise_logs.*.round_number' => 'رقم الجولة',
         'exercise_logs.*.reps' => 'التكرارات',
         'exercise_logs.*.weight' => 'الوزن',
+        'image_url' => 'رابط الصورة',
+        'days_count' => 'عدد الأيام',
+        'days' => 'الأيام',
+        'days.*.day_name' => 'اسم اليوم',
+        'days.*.exercises' => 'التمارين',
+        'days.*.exercises.*.exercise_id' => 'معرّف التمرين',
+        'days.*.exercises.*.order' => 'الترتيب',
     ],
 ];

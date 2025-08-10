@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ExerciseController;
+use App\Http\Controllers\PredefinedWorkoutPlanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkoutSessionController;
 use Illuminate\Support\Facades\Route;
@@ -40,4 +41,15 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/workout-sessions/{id}/skip', [WorkoutSessionController::class, 'skip']);
     Route::delete('/workout-sessions/{id}', [WorkoutSessionController::class, 'destroy']);
     Route::get('/workout-sessions/exercise/{exercise_id}/previous', [WorkoutSessionController::class, 'previousSessions']);
+
+    // Predefined Workout Plans (accessible to all authenticated users)
+    Route::get('/predefined-workout-plans', [PredefinedWorkoutPlanController::class, 'index']);
+    Route::get('/predefined-workout-plans/{id}', [PredefinedWorkoutPlanController::class, 'show']);
+
+    // Admin-only routes for managing predefined workout plans
+    Route::middleware(['check.role:admin'])->group(function () {
+        Route::post('/predefined-workout-plans', [PredefinedWorkoutPlanController::class, 'store']);
+        Route::patch('/predefined-workout-plans/{id}', [PredefinedWorkoutPlanController::class, 'update']);
+        Route::delete('/predefined-workout-plans/{id}', [PredefinedWorkoutPlanController::class, 'destroy']);
+    });
 });

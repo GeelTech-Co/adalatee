@@ -47,5 +47,12 @@ return [
         'exercise_logs.*.round_number' => 'round number',
         'exercise_logs.*.reps' => 'reps',
         'exercise_logs.*.weight' => 'weight',
+        'image_url' => 'image URL',
+        'days_count' => 'days count',
+        'days' => 'days',
+        'days.*.day_name' => 'day name',
+        'days.*.exercises' => 'exercises',
+        'days.*.exercises.*.exercise_id' => 'exercise ID',
+        'days.*.exercises.*.order' => 'order',
     ],
 ];

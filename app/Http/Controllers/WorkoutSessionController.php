@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\WorkoutSession;
 use App\Models\ExerciseLog;
+use App\Models\PredefinedWorkoutPlanDay;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
@@ -185,6 +186,20 @@ class WorkoutSessionController extends Controller
                 ], 422);
             }
 
+            // Validate that day_id belongs to plan_id
+            if ($validated['plan_id'] && $validated['day_id']) {
+                $day = PredefinedWorkoutPlanDay::where('id', $validated['day_id'])
+                    ->where('plan_id', $validated['plan_id'])
+                    ->first();
+                if (!$day) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => __('messages.validation_failed'),
+                        'errors' => ['day_id' => 'The selected day does not belong to the specified plan.'],
+                    ], 422);
+                }
+            }
+
             $session = WorkoutSession::create([
                 'user_id' => $user->id,
                 'plan_id' => $validated['plan_id'] ?? null,
@@ -300,6 +315,20 @@ class WorkoutSessionController extends Controller
                     'message' => __('messages.validation_failed'),
                     'errors' => ['plan' => __('messages.validation_failed_plan')],
                 ], 422);
+            }
+
+            // Validate that day_id belongs to plan_id
+            if ($validated['plan_id'] && $validated['day_id']) {
+                $day = PredefinedWorkoutPlanDay::where('id', $validated['day_id'])
+                    ->where('plan_id', $validated['plan_id'])
+                    ->first();
+                if (!$day) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => __('messages.validation_failed'),
+                        'errors' => ['day_id' => __('messages.invalid_day_for_plan')],
+                    ], 422);
+                }
             }
 
             // Check for incomplete main exercises if completing the session
