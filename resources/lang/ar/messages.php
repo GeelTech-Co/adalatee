@@ -42,4 +42,17 @@ return [
     'failed_to_create' => 'فشل الإنشاء: :error',
     'failed_to_retrieve' => 'فشل الاسترجاع: :error',
     'failed_to_delete' => 'فشل الحذف: :error',
+
+    // ... Existing messages ...
+    'workout_sessions_retrieved' => 'تم استرجاع جلسات التمارين بنجاح',
+    'workout_session_retrieved' => 'تم استرجاع جلسة التمرين بنجاح',
+    'workout_session_created' => 'تم إنشاء جلسة التمرين بنجاح',
+    'workout_session_updated' => 'تم تحديث جلسة التمرين بنجاح',
+    'workout_session_completed' => 'تم إكمال جلسة التمرين بنجاح',
+    'workout_session_skipped' => 'تم تخطي جلسة التمرين بنجاح',
+    'workout_session_deleted' => 'تم حذف جلسة التمرين بنجاح',
+    'workout_session_not_found' => 'جلسة التمرين غير موجودة',
+    'incomplete_main_exercises_warning' => 'بعض التمارين الأساسية لم تكتمل. هل أنت متأكد أنك تريد إنهاء الجلسة؟',
+    'no_previous_sessions' => 'لا توجد جلسات سابقة متاحة',
+    'validation_failed_plan' => 'لا يمكن اختيار خطة محددة مسبقًا وخطة مخصصة في نفس الوقت.',
 ];

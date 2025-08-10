@@ -42,4 +42,18 @@ return [
     'failed_to_create' => 'Failed to create: :error',
     'failed_to_retrieve' => 'Failed to retrieve: :error',
     'failed_to_delete' => 'Failed to delete: :error',
+
+    // ... Existing messages ...
+    'workout_sessions_retrieved' => 'Workout sessions retrieved successfully',
+    'workout_session_retrieved' => 'Workout session retrieved successfully',
+    'workout_session_created' => 'Workout session created successfully',
+    'workout_session_updated' => 'Workout session updated successfully',
+    'workout_session_completed' => 'Workout session completed successfully',
+    'workout_session_skipped' => 'Workout session skipped successfully',
+    'workout_session_deleted' => 'Workout session deleted successfully',
+    'workout_session_not_found' => 'Workout session not found',
+    'incomplete_main_exercises_warning' => 'Some main exercises are not completed. Are you sure you want to end the session?',
+    'no_previous_sessions' => 'No previous sessions available',
+    'validation_failed_plan' => 'Cannot select both predefined and custom plan.',
+    
 ];
